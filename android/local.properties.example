@@ -1,0 +1,3 @@
+# Copy to local.properties and set your paths (CI sets these automatically).
+# sdk.dir=/path/to/Android/sdk
+# flutter.sdk=/path/to/flutter

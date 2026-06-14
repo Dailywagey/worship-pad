@@ -1,0 +1,40 @@
+name: worship_pad
+description: "Worship Pad - professional low-latency pad performance app for live worship."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Low-latency audio engine (SoLoud / miniaudio backend, in-memory PCM playback)
+  flutter_soloud: ^2.1.7
+
+  # File picking for audio import + backup import/export
+  file_picker: ^8.1.2
+
+  # App documents directory for the audio library
+  path_provider: ^2.1.4
+
+  # Persistent JSON storage for banks/groups/pads/sets/settings
+  shared_preferences: ^2.3.2
+
+  # Unique IDs for sets
+  uuid: ^4.5.0
+
+  # Typography
+  google_fonts: ^6.2.1
+
+  # Keep the screen awake during a worship set
+  wakelock_plus: ^1.2.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
