@@ -1,0 +1,42 @@
+name: Build Worship Pad APK
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:        # lets you trigger a build manually from the Actions tab
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17 (required by Android Gradle Plugin 8.x)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Flutter (stable channel)
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Show Flutter version
+        run: flutter --version
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build release APK
+        run: flutter build apk --release
+
+      - name: Upload the APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: worship-pad-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: error
